@@ -1,14 +1,7 @@
 //alert("JS");
-document.write("Hello JavaScript!<br>");
-document.write("<b>Welcome JS</b>");
-document.write("<h1>Helllllllo</h1>");4
 
-var name = "art dvp";
-// var age = 28;
 
-// document.write(name + " " + age);
-// console.log(name);
-// console.log(age);
+
 
 // var status = confirm("Art you ok?");
 // console.log(status);
