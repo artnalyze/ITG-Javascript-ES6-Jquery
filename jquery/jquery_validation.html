@@ -25,11 +25,36 @@
         <label for="tel">Tel</label>
         <input type="mobile" name="tel" id="tel" />
       </div>
+      <div>
+        <label for="tel">Id Card</label>
+        <input type="text" name="idcard" id="idcard" />
+      </div>
       <button id="" type="submit">Submit</button>
     </form>
     <script src="jquery-3.5.1.min.js"></script>
     <script src="dist/jquery.validate.min.js"></script>
+    <script src="dist/additional-methods.min.js"></script>
     <script>
+      jQuery.validator.addMethod(
+        "checkIDCard",
+        function (value, element) {
+          var pid = value;
+          pid = pid.toString().replace(/\D/g, "");
+          if (pid.length == 13) {
+            var sum = 0;
+            for (var i = 0; i < pid.length - 1; i++) {
+              sum += Number(pid.charAt(i)) * (pid.length - i);
+            }
+            var last_digit = (11 - (sum % 11)) % 10;
+            $(element).val(pid);
+            return pid.charAt(12) == last_digit;
+          } else {
+            return false;
+          }
+        },
+        "รหัสบัตรประชาชนไม่ถูกต้อง"
+      );
+
       $("form#register").validate({
         rules: {
           fullname: {
@@ -40,6 +65,10 @@
           },
           tel: {
             required: true,
+          },
+          idcard: {
+            required: true,
+            checkIDCard: true,
           },
         },
         messages: {
