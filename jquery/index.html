@@ -4,10 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Besic jQuery</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      .setbg {
+        background-color: aqua;
+        color: brown;
+        font-size: 24px;
+      }
+    </style>
   </head>
   <body>
     <h1>Basic jQuery</h1>
-    <p>
+    <p id="p1">
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni neque
       harum, incidunt aperiam perspiciatis qui reiciendis quasi est veniam alias
       molestias blanditiis in dolores eveniet nisi mollitia voluptatem odio
@@ -15,10 +23,37 @@
       sequi quis repellendus error reiciendis consequuntur molestias. Quasi
       nulla esse cupiditate numquam.
     </p>
+    <p class="p2">
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis,
+      voluptatibus!
+    </p>
+    <span class="p2">Lorem ipsum dolor sit amet.</span><br />
+    <article>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio nemo
+      corporis neque numquam quo porro distinctio error delectus amet, obcaecati
+      eveniet eaque consequatur exercitationem veniam dolor possimus saepe
+      suscipit cum?
+    </article>
     <script src="jquery-3.5.1.min.js"></script>
     <script>
       $(function () {
         // alert("Hello jQuery");
+        // selector and css
+        $("h1").css("color", "red");
+
+        $("#p1").css("background-color", "yellow");
+
+        $(".p2").css("background-color", "pink");
+        $("span.p2").css("background-color", "lightblue");
+
+        // set class
+        $("article").addClass("setbg");
+
+        // remove class
+        $("article").removeClass("setbg");
+
+        // change toggle add and remove class
+        $("article").toggleClass("setbg");
       }); // page load done
 
       // arrow jquery es6
