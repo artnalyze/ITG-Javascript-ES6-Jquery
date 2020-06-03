@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ajax get Json Server</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="jumbotron">
+      <h1 class="display-3">Jumbo heading</h1>
+      <p class="lead">Jumbo helper text</p>
+      <hr class="my-2" />
+      <p>More info</p>
+      <p class="lead">
+        <a class="btn btn-primary btn-lg" href="Jumbo action link" role="button"
+          >Jumbo action name</a
+        >
+      </p>
+    </div>
+    <div class="container">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Barcode</th>
+            <th>Qty</th>
+            <th>Price</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody id="tbo"></tbody>
+      </table>
+    </div>
+    <script src="jquery-3.5.1.min.js"></script>
+    <script>
+      let url_json =
+        "https://www.itgenius.co.th/sandbox_api/ministockapi/public/api/products";
+      $(function () {
+        // load data from other domain
+        $.getJSON(url_json, function (result) {
+          console.log(result);
+          let trHTML = "";
+          $.each(result, function (i, item) {
+            trHTML += `
+            <tr>
+              <td>${item.id}</td>
+              <td>${item.product_name}</td>
+              <td>${item.product_barcode}</td>
+              <td>${item.product_qty}</td>
+              <td>${item.product_price}</td>
+              <td>${item.product_date}</td>
+            </tr>
+          `;
+          });
+
+          $("table tbody").append(trHTML);
+        });
+      });
+      // https://harvesthq.github.io/chosen/
+      // https://www.highcharts.com/demo/line-basic
+      // https://www.chartjs.org/samples/latest/
+      // https://www.amcharts.com/demos/
+    </script>
+  </body>
+</html>

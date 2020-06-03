@@ -87,7 +87,28 @@
           error.appendTo(element.parent());
           // error.appendTo(".help-block");
         },
-        submitHandler: function (form) {},
+        submitHandler: function (form) {
+          // $.post("testpost.html", function (data) {
+          //   alert(data);
+          // });
+          // $.get("testpost.html", function (data) {
+          //   alert(data);
+          // });
+          $.ajax({
+            type: "get",
+            url: "testpost.html",
+            data: { name: "John", location: "Thailand" },
+            dataType: "json",
+            success: function (response) {
+              // console.log("TTT_TTT");
+              alert(response);
+            },
+          });
+
+          $("form#register").trigger("reset");
+          // focus cursor
+          $("#fullname").focus();
+        },
       });
     </script>
   </body>
